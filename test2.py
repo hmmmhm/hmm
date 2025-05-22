@@ -19,12 +19,14 @@ def load_teacher_json():
         subject = str(row.get("키워드", "")).strip()
         location = str(row.get("위치", "")).strip()
         purpose = str(row.get("목적", "")).strip()
+        classnumber = str(row.get(들어가시는 수업 반", "")).strip()
         if name:
             teacher_list.append({
                 "이름": name,
                 "과목": subject or "정보 없음",
                 "위치": location or "정보 없음",
-                "설명": purpose or "정보 없음"
+                "설명": purpose or "정보 없음",
+                "수업 반": classnumber or "정보 없음"
             })
     return teacher_list
 
@@ -62,6 +64,8 @@ def build_prompt(messages, teacher_data):
   → "죄송합니다. 이 안내 서비스는 와우고등학교 내부 구성원(학생, 교직원)을 위한 서비스입니다. 양해 부탁드립니다."
 
 - 이 경우, 다시 인사말을 반복하거나 질문을 유도하지 마. (즉시 종료 응답)
+
+- 선생님에 관한 답변을 물어볼때, 선생님 수업 반 정보를 통해 사용자에게 원하는 학년을 먼저 물어봐줘줘
 
 ---
 
