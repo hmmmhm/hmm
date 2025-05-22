@@ -19,7 +19,7 @@ def load_teacher_json():
         subject = str(row.get("키워드", "")).strip()
         location = str(row.get("위치", "")).strip()
         purpose = str(row.get("목적", "")).strip()
-        classnumber = str(row.get(들어가시는 수업 반", "")).strip()
+        classnumber = str(row.get("들어가시는 수업 반", "")).strip()
         if name:
             teacher_list.append({
                 "이름": name,
