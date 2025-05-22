@@ -3,6 +3,7 @@ import pandas as pd
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
+from PIL import Image
 
 # 환경변수에서 API 키 불러오기
 load_dotenv()
@@ -123,7 +124,15 @@ def get_gemini_response(prompt):
         return f"오류가 발생했습니다: {str(e)}"
 
 # Streamlit 인터페이스
-st.title("선생님 안내")
+logo = Image.open("교표 마크만.png")
+
+# 제목과 로고 나란히 배치
+col1, col2 = st.columns([1, 6])
+with col1:
+    st.image(logo, width=60)
+with col2:
+    st.title("와우고 선생님 안내")
+
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
