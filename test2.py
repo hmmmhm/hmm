@@ -126,10 +126,10 @@ def get_gemini_response(prompt):
 # Streamlit 인터페이스
 logo = Image.open("교표 마크만.png")
 
-# 제목과 로고 나란히 배치
+#나란히?
 col1, col2 = st.columns([1, 6])
 with col1:
-    st.image(logo, width=60)
+    st.image(logo, width=100)
 with col2:
     st.title("와우고 선생님 안내")
 
