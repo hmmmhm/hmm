@@ -5,12 +5,10 @@ import os
 from dotenv import load_dotenv
 from PIL import Image
 
-# 환경변수에서 API 키 불러오기
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 model = genai.GenerativeModel("gemini-1.5-flash")  # 또는 gemini-1.5-pro / flash
 
-# 엑셀에서 선생님 데이터 불러오기
 @st.cache_data
 def load_teacher_json():
     df = pd.read_excel("ㄳㅎ.xlsx")
@@ -33,7 +31,7 @@ def load_teacher_json():
 
 teacher_knowledge = load_teacher_json()
 
-# 대화 이력을 자연어로 정리
+#제미니한테 대화 이력 주기
 def format_history(messages):
     formatted = ""
     for m in messages:
@@ -152,7 +150,7 @@ if user_input := st.chat_input("무엇이든 물어보세요 (예: 과학 선생
     with st.chat_message("user"):
         st.markdown(user_input)
 
-    # 프롬프트 구성 및 Gemini 응답
+    # 프롬프트 구성 및 Gemini 응답 훔치기
     teacher_json = str(teacher_knowledge)
     prompt = build_prompt(st.session_state.messages, teacher_json)
     response = get_gemini_response(prompt)
