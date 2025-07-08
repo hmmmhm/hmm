@@ -7,7 +7,7 @@ from PIL import Image
 
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-model = genai.GenerativeModel("gemini-1.5-flash")  # 또는 gemini-1.5-pro / flash
+model = genai.GenerativeModel("gemini-2.5-flash")  # 또는 gemini-1.5-pro / flash
 
 @st.cache_data
 def load_teacher_json():
